@@ -3,7 +3,7 @@
 This repository contains the implementation and validation of a delay-aware Tube Model-Predictive Control (Tube-MPC) framework developed for a six-degree-of-freedom spacecraft during rendezvous and docking (RVD).  
 
 ## Contents
-- `/report` — Final technical report (PDF)
+- `/report` — All technical reports (PDF)
 - `/src` — All simulation and controller scripts  
 - `/results` — Plots, figures, and comparison tables
 
