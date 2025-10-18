@@ -1,16 +1,24 @@
-# Model-Predictive-Control-for-Spacecraft-Docking
-Overview
+# Delay-Robust Tube Model-Predictive Control for Six-DOF Spacecraft RVD
 
-This project investigates the use of Model Predictive Control (MPC) for autonomous spacecraft rendezvous and docking (RVD), a maneuver requiring precise six-degree-of-freedom (6-DOF) control of both translation and rotation. Traditional controllers such as PD or LQR perform well in simplified cases but degrade in coupled dynamics or when explicit constraints must be enforced.
+This repository contains the implementation and validation of a delay-aware Tube Model-Predictive Control (Tube-MPC) framework developed for a six-degree-of-freedom spacecraft during rendezvous and docking (RVD).  
 
-A nonlinear 6-DOF plant model was developed, and both MPC and a baseline LQR controller were implemented and compared. Results show that MPC achieves stable convergence in coupled and uncoupled cases, with positional errors under 0.05 m and attitude errors within 0.024 rad RMS, highlighting its advantages for high-precision spacecraft control.
+## Contents
+- `/report` — Final technical report (PDF)
+- `/src` — All simulation and controller scripts  
+- `/results` — Plots, figures, and comparison tables
 
-A detailed technical report describing the problem formulation, methodology, results, and discussion is included in this repository.
+## Description
+The project implements a robust Tube-MPC formulation capable of handling actuator delays in spacecraft control loops. The approach guarantees bounded tracking within an invariant ellipsoid while maintaining constraint satisfaction.
 
-(Figures available in the report.)
+## Highlights
+- 6-DOF nonlinear spacecraft dynamics with attitude–translation coupling  
+- Discrete-time linearization and delay modeling  
+- Tube-MPC controller using Lyapunov-based invariant set computation  
+- Quantitative comparison against nominal delay-afflicted MPC  
 
-Planned extensions include incorporating delay-tolerant strategies and running Monte Carlo simulations to evaluate robustness under uncertainties.
+## How to Run
+1. Clone this repository  
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
 
-License:
-
-This work is licensed under the Creative Commons License. Please cite this repository if using material from it.
