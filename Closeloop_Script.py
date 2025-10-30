@@ -19,9 +19,8 @@ import scipy.linalg as la
 T = 500.0
 dt = 2
 steps = int(T/dt)
-
-n = 0.0021                      # Mean motion in rad/s (example)
-mass = 500                     # kg
+                   
+mass = 500                               # kg
 J = np.diag([100, 100, 100])             # Moment of inertia [Jx, Jy, Jz]
 
 # Initial and target states
@@ -313,4 +312,5 @@ plt.ylabel('Error Norm')
 plt.title('State Trajectory Approach and Invariance in Tube MPC')
 plt.legend(); plt.grid(True)
 plt.show()
+
 
