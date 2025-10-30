@@ -132,7 +132,7 @@ print("eig(A-BK):", eigs)
 
 
 
-
+### debugging section for adjusting Q and R scaling ###
 print("cond(A):", np.linalg.cond(A_init))
 print("A row norms (min,median,max):", np.sqrt((A_init**2).sum(axis=1)).min(),
       np.median(np.sqrt((A_init**2).sum(axis=1))), np.sqrt((A_init**2).sum(axis=1)).max())
@@ -312,5 +312,6 @@ plt.ylabel('Error Norm')
 plt.title('State Trajectory Approach and Invariance in Tube MPC')
 plt.legend(); plt.grid(True)
 plt.show()
+
 
 
