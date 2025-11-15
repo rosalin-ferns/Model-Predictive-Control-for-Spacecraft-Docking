@@ -1,3 +1,5 @@
+## Unified Delay Tolerant MPC framework ##
+
 import numpy as np
 import scipy.linalg as la
 
@@ -110,60 +112,6 @@ class UDAMPC:
 
 
 
-    # def compute_rpi_ellipsoid(self, Ak, W):
-    #     """
-    #     Compute P solving: Ak P Ak^T - P + W = 0
-    #     """
-    #     import numpy as np
-    #     import scipy.linalg as la
-    #     try:
-    #         P = la.solve_discrete_lyapunov(Ak, W)
-    #     except Exception as e:
-    #         eigs = np.linalg.eigvals(Ak)
-    #         if np.any(np.abs(eigs) >= 1.0):
-    #             Ak_reg = 0.99 * Ak
-    #             P = la.solve_discrete_lyapunov(Ak_reg, W)
-    #         else:
-    #             raise
-    #     P = 0.5*(P + P.T) + 1e-12*np.eye(P.shape[0])
-    #     return P
-
-
-    # def tube_control(self, A, B, x, x_ref, K, w_bound=0.05,
-    #                  cap_frac_force=0.2, cap_frac_torque=0.3):
-    #     import numpy as np
-    #     n = A.shape[0]
-    #     W = (w_bound**2) * np.eye(n)
-    #     P = self.compute_rpi_ellipsoid(A - B @ K, W)   
-
-    #     margins = []
-    #     for i in range(B.shape[1]):
-    #         k_i = K[i, :].reshape(1, -1)
-    #         margin_i = float(np.sqrt(k_i @ P @ k_i.T))
-    #         margins.append(margin_i)
-    #     u_margin = np.array(margins)
-
-    #     u_min_orig = self.mpc.u_min.copy()
-    #     u_max_orig = self.mpc.u_max.copy()
-    #     act_range = 0.5*(np.abs(u_min_orig) + np.abs(u_max_orig))
-    #     caps = np.zeros_like(u_margin)
-    #     caps[:3] = cap_frac_force * act_range[:3]
-    #     caps[3:] = cap_frac_torque * act_range[3:]
-    #     u_margin = np.minimum(u_margin, caps)
-
-    #     self.mpc.u_min = u_min_orig + u_margin
-    #     self.mpc.u_max = u_max_orig - u_margin
-
-    #     self.mpc.update_model(A, B, x, x_ref)
-    #     u_nom = self.mpc.solve().flatten()
-
-    #     self.mpc.u_min, self.mpc.u_max = u_min_orig, u_max_orig
-
-    #     fb_scale = 0.04
-    #     u_fb = -fb_scale * (K @ (x - x_ref))
-    #     u_total = u_nom + u_fb
-    #     u_total = np.clip(u_total, u_min_orig, u_max_orig)
-    #     return u_total
 
 
 
